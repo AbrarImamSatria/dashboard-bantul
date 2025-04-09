@@ -70,7 +70,7 @@ const WisataDashboard = () => {
       {/* Dashboard Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Jumlah Wisata Per-Kecamatan */}
-        <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-md">
+        <div className="border rounded-lg p-4 bg-[#DDE5DC] shadow-md">
           <h2 className="text-lg font-bold mb-4 text-center">Jumlah Wisata Per-Kecamatan (2024)</h2>
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
@@ -90,7 +90,7 @@ const WisataDashboard = () => {
         </div>
         
         {/* Jumlah Wisata Berdasarkan Status */}
-        <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-md">
+        <div className="border rounded-lg p-4 bg-[#DDE5DC] shadow-md">
           <h2 className="text-lg font-bold mb-4 text-center">Jumlah Wisata Berdasarkan Status</h2>
           <div className="h-80 flex justify-center items-center">
             <ResponsiveContainer width="100%" height="100%">
@@ -130,7 +130,7 @@ const WisataDashboard = () => {
       </div>
 
       {/* Third Row */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-md">
+      <div className="border rounded-lg p-4 bg-[#DDE5DC] shadow-md">
         <h2 className="text-lg font-bold mb-4 text-center">Distribusi Wisata Berdasarkan Aksesibilitas</h2>
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
@@ -154,7 +154,7 @@ const WisataDashboard = () => {
 
 export default function DistribusiPariwisataPage() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-[#F7F7F3] min-h-screen">
       <MenuPariwisata />
       <div className="max-w-6xl mx-auto pt-3">
         <Breadcrumb /> 

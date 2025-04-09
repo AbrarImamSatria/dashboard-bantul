@@ -81,7 +81,7 @@ const GrafikJenisKelamin: React.FC<GrafikJenisKelaminProps> = ({
   distribusiJenisKelamin,
 }) => {
   return (
-    <div className="border border-gray-200 rounded-lg p-6 bg-white shadow-md">
+    <div className="border border-gray-200 rounded-lg p-6 bg-[#DDE5DC] shadow-md">
       <h2 className="text-xl font-bold mb-4 text-left">
         Distribusi ASN Berdasarkan Jenis Kelamin
       </h2>
@@ -160,7 +160,7 @@ const GrafikPendidikan: React.FC<GrafikPendidikanProps> = ({
   distribusiPendidikan,
 }) => {
   return (
-    <div className="border border-gray-200 rounded-lg p-6 bg-white shadow-md">
+    <div className="border border-gray-200 rounded-lg p-6 bg-[#DDE5DC] shadow-md">
       <h2 className="text-xl font-bold mb-4 text-center">
         Distribusi ASN Berdasarkan Pendidikan
       </h2>
@@ -196,7 +196,7 @@ interface GrafikUsiaProps {
 
 const GrafikUsia: React.FC<GrafikUsiaProps> = ({ distribusiUsia }) => {
   return (
-    <div className="border border-gray-200 rounded-lg p-6 bg-white shadow-md">
+    <div className="border border-gray-200 rounded-lg p-6 bg-[#DDE5DC] shadow-md">
       <h2 className="text-xl font-bold mb-4 text-center">
         Distribusi ASN Berdasarkan Usia
       </h2>
@@ -285,7 +285,7 @@ const Dashboard = () => {
 
 export default function HalamanASN() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-[#F7F7F3] min-h-screen">
       <MenuKepegawaian />
       <div className="max-w-6xl mx-auto pt-3">
         <Breadcrumb /> 

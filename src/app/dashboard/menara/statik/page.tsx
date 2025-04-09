@@ -82,11 +82,11 @@ const MenuMenara = () => {
   };
 
   return (
-    <div className="flex justify-center bg-gray-100 p-3 space-x-8">
+    <div className="flex justify-center bg-[#6D8B74] p-3 space-x-8">
       {menuItems.map((item, index) => (
         <div
           key={index}
-          className="flex items-center text-black space-x-2 cursor-pointer"
+          className="flex items-center text-white space-x-2 cursor-pointer"
           onClick={() => handleNavigation(item.path)}
         >
           {item.icon}
@@ -178,11 +178,11 @@ const DashboardDistribusiMenara = () => {
   return (
     <div className="p-4 flex flex-col gap-4 max-w-6xl mx-auto">
       {/* Distribusi Menara Berdasarkan Perusahaan */}
-      <div className="border rounded-lg p-4 bg-white shadow-sm">
+      <div className="rounded-lg p-4 bg-[#DDE5DC]">
         <h3 className="text-lg font-semibold mb-1">
           Distribusi Menara Berdasarkan Perusahaan
         </h3>
-        <p className="text-xs text-gray-500 mb-4">
+        <p className="text-xs text-black mb-4">
           Analisis{" "}
           {data.distribusiPerusahaan.reduce(
             (acc: number, item: PieDataItem) => acc + item.value,
@@ -222,11 +222,11 @@ const DashboardDistribusiMenara = () => {
       </div>
 
       {/* Distribusi Menara Berdasarkan Kapanewon */}
-      <div className="border rounded-lg p-4 bg-white shadow-sm">
+      <div className="rounded-lg p-4 bg-[#DDE5DC]">
         <h3 className="text-lg font-semibold mb-1">
           Distribusi Menara Berdasarkan Kapanewon
         </h3>
-        <p className="text-xs text-gray-500 mb-4">
+        <p className="text-xs text-black mb-4">
           Total{" "}
           {data.distribusiKapanewon.reduce(
             (acc: number, item: BarDataItem) => acc + item.value,
@@ -274,11 +274,11 @@ const DashboardDistribusiMenara = () => {
       </div>
 
       {/* Distribusi Menara Berdasarkan Ketinggian */}
-      <div className="border rounded-lg p-4 bg-white shadow-sm">
+      <div className="rounded-lg p-4 bg-[#DDE5DC]">
         <h3 className="text-lg font-semibold mb-1">
           Distribusi Menara Berdasarkan Ketinggian
         </h3>
-        <p className="text-xs text-gray-500 mb-4">
+        <p className="text-xs text-black mb-4">
           Analisis{" "}
           {data.distribusiKetinggian.reduce(
             (acc: number, item: BarDataItem) => acc + item.value,
@@ -312,11 +312,11 @@ const DashboardDistribusiMenara = () => {
       </div>
 
       {/* Distribusi Menara Berdasarkan Zona Kawasan */}
-      <div className="border rounded-lg p-4 bg-white shadow-sm">
+      <div className="rounded-lg p-4 bg-[#DDE5DC] shadow-sm">
         <h3 className="text-lg font-semibold mb-1">
           Distribusi Menara Berdasarkan Zona Kawasan
         </h3>
-        <p className="text-xs text-gray-500 mb-4">
+        <p className="text-xs text-black mb-4">
           Analisis{" "}
           {data.distribusiZona.reduce(
             (acc: number, item: ZonaDataItem) =>
@@ -387,7 +387,7 @@ const DashboardDistribusiMenara = () => {
 // Main Component
 export default function HalamanMenara() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-[#F7F7F3] min-h-screen">
       <MenuMenara />
       <div className="max-w-6xl mx-auto pt-3">
         <Breadcrumb /> {/* Menambahkan komponen breadcrumb */}

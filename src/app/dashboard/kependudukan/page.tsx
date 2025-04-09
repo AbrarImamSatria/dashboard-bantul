@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FaUsers } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { ReactElement } from "react";
+import MenuKependudukan from "@/components/kependudukan/MenuKependudukan";
 import {
   PieChart,
   Pie,
@@ -85,24 +86,6 @@ interface ChartDashboardProps {
   dataPekerjaan: DataPekerjaan[];
 }
 
-const MenuKependudukan = () => {
-  const router = useRouter();
-  // Empty menu items array
-  const menuItems: { icon: ReactElement; label: string; path: string }[] = [];
-
-  // The handleNavigation function is kept for future use if needed
-  const handleNavigation = (path: string) => {
-    router.push(path);
-  };
-
-  // Return a div with fixed height to maintain consistent spacing
-  return (
-    <div className="flex justify-center items-center bg-gray-100 h-12">
-      {/* Empty menu bar with fixed height */}
-    </div>
-  );
-};
-
 const FilterComponent = ({
   tahunOptions,
   kecamatanOptions,
@@ -116,7 +99,7 @@ const FilterComponent = ({
   };
 
   return (
-    <div className="bg-gray-200 p-6 rounded-md">
+    <div className="bg-[#BFD0C1] p-6 rounded-md">
       <div className="text-lg font-bold mb-4">Filter</div>
       <div className="flex flex-col md:flex-row gap-4">
         {/* Dropdown Tahun */}
@@ -172,7 +155,7 @@ const FilterComponent = ({
         {/* Tombol Filter */}
         <button
           onClick={handleFilter}
-          className="w-full md:w-auto bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded focus:outline-none"
+          className="w-full md:w-auto bg-[#6D8B74] hover:bg-[#7cb489] text-white font-medium py-2 px-4 rounded focus:outline-none"
         >
           Filter data
         </button>
@@ -191,17 +174,17 @@ const DashboardCards = ({
     {
       label: "Total Penduduk",
       value: dashboardData.total_penduduk.toLocaleString(),
-      icon: <FaUsers className="text-4xl text-teal-600" />,
+      icon: <FaUsers className="text-4xl text-white" />,
     },
     {
       label: "Kepadatan Penduduk",
       value: dashboardData.kepadatan_penduduk.toLocaleString(),
-      icon: <FaUsers className="text-4xl text-teal-600" />,
+      icon: <FaUsers className="text-4xl text-white" />,
     },
     {
       label: "Rasio Jenis Kelamin",
       value: dashboardData.rasio_jenis_kelamin.toLocaleString(),
-      icon: <FaUsers className="text-4xl text-teal-600" />,
+      icon: <FaUsers className="text-4xl text-white" />,
     },
   ];
 
@@ -210,7 +193,7 @@ const DashboardCards = ({
       {cardData.map((item) => (
         <div
           key={item.label}
-          className="border border-gray-200 rounded-lg p-4 bg-white shadow-md flex flex-col items-center justify-center h-24"
+          className="border border-gray-200 rounded-lg p-4 bg-[#8FAB98] shadow-md flex flex-col items-center justify-center h-24"
         >
           {/* Konten rata tengah */}
           <div className="flex items-center justify-center">
@@ -218,10 +201,10 @@ const DashboardCards = ({
             <div className="mr-3">{item.icon}</div>
             {/* Teks */}
             <div className="flex flex-col items-center">
-              <div className="text-sm text-gray-600 text-center">
+              <div className="text-sm text-white text-center">
                 {item.label}
               </div>
-              <div className="text-xl font-bold text-center">
+              <div className="text-xl font-bold text-center text-white">
                 {item.value} <span className="text-sm font-normal"></span>
               </div>
             </div>
@@ -243,7 +226,7 @@ const ChartDashboard = ({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {/* Distribusi Jenis Kelamin */}
-      <div className="bg-white p-4 rounded-lg shadow">
+      <div className="bg-[#DDE5DC] p-4 rounded-lg shadow">
         <h3 className="text-lg font-medium mb-2">Distribusi Jenis Kelamin</h3>
         <ResponsiveContainer width="100%" height={250}>
           <PieChart>
@@ -273,7 +256,7 @@ const ChartDashboard = ({
       </div>
 
       {/* Distribusi Penduduk Berdasarkan Usia */}
-      <div className="bg-white p-4 rounded-lg shadow">
+      <div className="bg-[#DDE5DC] p-4 rounded-lg shadow">
         <h3 className="text-lg font-medium mb-2">
           Distribusi Penduduk Berdasarkan Usia
         </h3>
@@ -295,7 +278,7 @@ const ChartDashboard = ({
       </div>
 
       {/* Distribusi Pendidikan */}
-      <div className="bg-white p-4 rounded-lg shadow">
+      <div className="bg-[#DDE5DC] p-4 rounded-lg shadow">
         <h3 className="text-lg font-medium mb-2">Distribusi Pendidikan</h3>
         <ResponsiveContainer width="100%" height={250}>
           <BarChart data={dataPendidikan} layout="vertical">
@@ -315,7 +298,7 @@ const ChartDashboard = ({
       </div>
 
       {/* Distribusi Status Perkawinan */}
-      <div className="bg-white p-4 rounded-lg shadow">
+      <div className="bg-[#DDE5DC] p-4 rounded-lg shadow">
         <h3 className="text-lg font-medium mb-2">
           Distribusi Status Perkawinan
         </h3>
@@ -356,7 +339,7 @@ const ChartDashboard = ({
       </div>
 
       {/* Distribusi Kelahiran */}
-      <div className="bg-white p-4 rounded-lg shadow">
+      <div className="bg-[#DDE5DC] p-4 rounded-lg shadow">
         <h3 className="text-lg font-medium mb-2">Distribusi Kelahiran</h3>
         <ResponsiveContainer width="100%" height={250}>
           <LineChart data={dataKelahiran}>
@@ -376,7 +359,7 @@ const ChartDashboard = ({
       </div>
 
       {/* Distribusi Pekerjaan */}
-      <div className="bg-white p-4 rounded-lg shadow">
+      <div className="bg-[#DDE5DC] p-4 rounded-lg shadow">
         <h3 className="text-lg font-medium mb-2">Distribusi Pekerjaan</h3>
         <ResponsiveContainer width="100%" height={250}>
           <BarChart data={dataPekerjaan} layout="vertical">
@@ -500,7 +483,7 @@ const CombinedDashboard = () => {
 
 export default function KependudukanPage() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="g-[#F7F7F3] min-h-screen">
       <MenuKependudukan />
       <div className="pb-9 pt-3">
         <CombinedDashboard />

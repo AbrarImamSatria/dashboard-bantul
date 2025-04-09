@@ -2,25 +2,14 @@
 import React from "react";
 import { FaChartPie, FaUsers } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import { ReactElement } from "react";
 
-const MenuPariwisata = () => {
+const MenuKepegawaian = () => {
   const router = useRouter();
-  const menuItems: { icon: ReactElement; label: string; path: string }[] = [
-    {
-      icon: <FaChartPie size={24} />,
-      label: "Distribusi Wisata",
-      path: "/dashboard/pariwisata/distribusi-wisata",
-    },
+  const menuItems: { icon: React.ReactElement; label: string; path: string }[] = [
     {
       icon: <FaUsers size={24} />,
-      label: "Jenis Wisata",
-      path: "/dashboard/pariwisata/jenis-wisata",
-    },
-    {
-      icon: <FaChartPie size={24} />,
-      label: "Jumlah Pengunjung",
-      path: "/dashboard/pariwisata/jumlah-pengunjung",
+      label: "Dashboard Kependudukan",
+      path: "/dashboard/kependudukan",
     },
   ];
 
@@ -44,4 +33,11 @@ const MenuPariwisata = () => {
   );
 };
 
-export default MenuPariwisata;
+export default MenuKepegawaian;
+
+
+
+
+
+
+

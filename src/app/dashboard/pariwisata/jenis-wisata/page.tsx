@@ -246,7 +246,7 @@ const JenisWisataDashboard = () => {
       {/* Bagian 1: Charts dari file pertama */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Jenis Wisata Pie Chart - Sebelah kiri */}
-        <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-md">
+        <div className="border rounded-lg p-4 bg-[#DDE5DC] shadow-md">
           <h2 className="text-lg font-bold mb-4 text-center">Jenis Wisata</h2>
           <div className="h-80 flex justify-center items-center">
             <ResponsiveContainer width="100%" height="100%">
@@ -291,7 +291,7 @@ const JenisWisataDashboard = () => {
         </div>
 
         {/* Trend Kepuasan Pelanggan Chart - Sebelah kanan */}
-        <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-md">
+        <div className="border rounded-lg p-4 bg-[#DDE5DC] shadow-md">
           <h2 className="text-lg font-bold mb-4 text-center">
             Trend Kepuasan Pelanggan
           </h2>
@@ -320,7 +320,7 @@ const JenisWisataDashboard = () => {
       </div>
 
       {/* Bagian 2: Performa Jenis Wisata */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-md">
+      <div className="border rounded-lg p-4 bg-[#DDE5DC] shadow-md">
         <h2 className="text-lg font-bold mb-4 text-center">
           Performa Jenis Wisata
         </h2>
@@ -416,7 +416,7 @@ const JenisWisataDashboard = () => {
 
 export default function JenisWisataPage() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-[#F7F7F3] min-h-screen">
       <MenuPariwisata />
       <div className="max-w-6xl mx-auto pt-3">
         <Breadcrumb />

@@ -38,15 +38,15 @@ const DashboardCards = ({ cardData, columns = 4 }: DashboardCardsProps) => {
       {cardData.map((item) => (
         <div
           key={item.label}
-          className="border border-gray-200 rounded-lg p-4 bg-white shadow-md flex flex-col items-center justify-center h-24"
+          className="border border-gray-200 rounded-lg p-4 bg-[#8FAB98] shadow-md flex flex-col items-center justify-center h-24"
         >
           <div className="flex items-center justify-center">
             <div className="mr-3">{item.icon}</div>
             <div className="flex flex-col items-center">
-              <div className="text-sm text-gray-600 text-center">
+              <div className="text-sm text-white text-center">
                 {item.label}
               </div>
-              <div className="text-xl font-bold text-center">
+              <div className="text-xl text-white font-bold text-center">
                 {item.value}
               </div>
             </div>
@@ -73,33 +73,33 @@ interface DetailFormasiProps {
 
 const DetailFormasiPanel = ({ detailFormasi }: DetailFormasiProps) => {
   return (
-    <div className="bg-gray-100 p-4 rounded shadow">
+    <div className="bg-[#8FAB98] p-4 rounded shadow">
       {/* Judul tetap di kiri */}
-      <h3 className="text-sm font-medium text-gray-700 mb-4">
+      <h3 className="text-sm font-medium text-white mb-4">
         Detail Formasi yang dibutuhkan
       </h3>
 
       {/* Konten card di tengah */}
       <div className="flex flex-wrap gap-4 justify-center">
-        <div className="bg-white p-4 rounded flex-1 min-w-48 flex flex-col items-center justify-center text-center">
-          <p className="text-xs font-medium text-gray-600 mb-1">
+        <div className="bg-[#BFD0C1] p-4 rounded flex-1 min-w-48 flex flex-col items-center justify-center text-center">
+          <p className="text-xs font-medium text-white mb-1">
             Tenaga Kesehatan
           </p>
-          <p className="text-3xl font-bold mb-1">
+          <p className="text-3xl font-bold mb-1 text-white">
             {detailFormasi.tenagaKesehatan.total}
           </p>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-white">
             {detailFormasi.tenagaKesehatan.keterangan}
           </p>
         </div>
-        <div className="bg-white p-4 rounded flex-1 min-w-48 flex flex-col items-center justify-center text-center">
-          <p className="text-xs font-medium text-gray-600 mb-1">
+        <div className="bg-[#BFD0C1] p-4 rounded flex-1 min-w-48 flex flex-col items-center justify-center text-center">
+          <p className="text-xs font-medium text-white mb-1">
             Tenaga Teknis
           </p>
-          <p className="text-3xl font-bold mb-1">
+          <p className="text-3xl font-bold mb-1 text-white">
             {detailFormasi.tenagaTeknis.total}
           </p>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-white">
             {detailFormasi.tenagaTeknis.keterangan}
           </p>
         </div>
@@ -154,7 +154,7 @@ const BarChartComparison = ({
   },
 }: BarChartComparisonProps) => {
   return (
-    <div className="border border-gray-200 rounded-lg p-6 bg-white shadow-md flex flex-col items-center">
+    <div className="border border-gray-200 rounded-lg p-6 bg-[#DDE5DC] shadow-md flex flex-col items-center">
       <h2 className="text-xl font-bold mb-4 text-center">{title}</h2>
       <div className="w-full flex justify-center mt-11">
         <RechartsBarChart
@@ -216,7 +216,7 @@ const DistribusiBarChart = ({
   height = 280,
 }: DistribusiBarChartProps) => {
   return (
-    <div className="border border-gray-200 rounded-lg p-6 bg-white shadow-md flex flex-col items-center">
+    <div className="border border-gray-200 rounded-lg p-6 bg-[#DDE5DC] shadow-md flex flex-col items-center">
       <h2 className="text-xl font-bold mb-4 text-center">{title}</h2>
       <div className="w-full flex justify-start pl-4">
         <RechartsBarChart
@@ -319,7 +319,7 @@ const PieChartComparison = ({
   };
 
   return (
-    <div className="border border-gray-200 rounded-lg p-6 bg-white shadow-md flex flex-col items-center">
+    <div className="border border-gray-200 rounded-lg p-6 bg-[#DDE5DC] shadow-md flex flex-col items-center">
       <h2 className="text-xl font-bold mb-6 text-center">
         {title}
       </h2>
@@ -411,17 +411,17 @@ const CombinedDetailDashboard = () => {
     {
       label: "Total Formasi",
       value: data.summaryStats.totalFormasi.toLocaleString(),
-      icon: <FaUsers className="text-4xl text-teal-600" />,
+      icon: <FaUsers className="text-4xl text-white" />,
     },
     {
       label: "Total ASN Saat Ini",
       value: data.summaryStats.totalASN.toLocaleString(),
-      icon: <FaUsers className="text-4xl text-teal-600" />,
+      icon: <FaUsers className="text-4xl text-white" />,
     },
     {
       label: "Kekurangan",
       value: data.summaryStats.kekurangan.toLocaleString(),
-      icon: <FaUsers className="text-4xl text-teal-600" />,
+      icon: <FaUsers className="text-4xl text-white" />,
     },
   ];
 
@@ -484,7 +484,7 @@ const CombinedDetailDashboard = () => {
 
 export default function HalamanASN() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-[#F7F7F3] min-h-screen">
       <MenuKepegawaian />
       <div className="max-w-6xl mx-auto pt-3">
         <Breadcrumb /> 

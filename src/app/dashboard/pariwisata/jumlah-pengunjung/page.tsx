@@ -19,7 +19,7 @@ import { getJumlahPengunjung } from "@/services/pariwisata/jumlahPengunjung";
 const JudulHalaman = () => {
   return (
     <div className="px-4 py-2">
-      <h1 className="text-2xl font-bold text-gray-900">
+      <h1 className="text-2xl font-bold text-black">
         Detail Jumlah Pengunjung
       </h1>
     </div>
@@ -177,7 +177,7 @@ const DashboardPariwisata = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen text-4xl">
+      <div className="flex justify-center items-center min-h-screen text-4xl text-black">
         Loading...
       </div>
     );
@@ -186,8 +186,8 @@ const DashboardPariwisata = () => {
   return (
     <div className="flex flex-col gap-8 p-4 max-w-6xl mx-auto">
       {/* Grafik 1: Jumlah Pengunjung Per Tahun Berdasarkan Kategori */}
-      <div className="border border-gray-200 rounded-lg p-6 bg-white shadow-md">
-        <h2 className="text-xl font-bold mb-6 text-center">
+      <div className="border rounded-lg p-4 bg-[#DDE5DC] shadow-md">
+        <h2 className="text-xl font-bold mb-6 text-center text-black">
           Jumlah Pengunjung Per Tahun Berdasarkan Kategori Objek Wisata
         </h2>
         <div className="h-80">
@@ -204,13 +204,14 @@ const DashboardPariwisata = () => {
                 horizontal={true}
                 vertical={false}
               />
-              <XAxis dataKey="name" />
-              <YAxis tickFormatter={formatSumbuYJuta} domain={[0, 9000]} />
+              <XAxis dataKey="name" tick={{ fill: 'black' }} />
+              <YAxis tickFormatter={formatSumbuYJuta} domain={[0, 9000]} tick={{ fill: 'black' }} />
               <Tooltip
                 formatter={(nilai: number) => [`${nilai} ribu pengunjung`]}
                 labelFormatter={(nilai: string) => `Tahun ${nilai}`}
+                contentStyle={{ color: 'black' }}
               />
-              <Legend wrapperStyle={{ paddingTop: 20 }} />
+              <Legend wrapperStyle={{ paddingTop: 20, color: 'black' }} />
               <Bar dataKey="Alam" name="Alam" stackId="a" fill="#004D40" />
               <Bar dataKey="Budaya" name="Budaya" stackId="a" fill="#00897B" />
               <Bar
@@ -228,8 +229,8 @@ const DashboardPariwisata = () => {
       {/* Grafik 2 & 3: Distribusi Pengunjung */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Distribusi Tahunan */}
-        <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-md">
-          <h2 className="text-lg font-bold mb-4 text-center">
+        <div className="border rounded-lg p-4 bg-[#DDE5DC] shadow-md">
+          <h2 className="text-lg font-bold mb-4 text-center text-black">
             Distribusi Pengunjung Per Tahun Berdasarkan Asal
           </h2>
           <div className="h-80">
@@ -239,20 +240,23 @@ const DashboardPariwisata = () => {
                 margin={{ top: 20, right: 40, left: 10, bottom: 20 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
+                <XAxis dataKey="name" tick={{ fill: 'black' }} />
                 <YAxis
                   tickFormatter={formatSumbuYDistribusi}
                   domain={[0, 10]}
+                  tick={{ fill: 'black' }}
                 />
                 <Tooltip
                   formatter={(nilai: number) => [`${nilai} juta pengunjung`]}
                   labelFormatter={(nilai: string) => `Tahun ${nilai}`}
+                  contentStyle={{ color: 'black' }}
                 />
                 <Legend
                   layout="horizontal"
                   align="right"
                   wrapperStyle={{
                     paddingRight: "20px",
+                    color: 'black'
                   }}
                 />
                 <Line
@@ -279,8 +283,8 @@ const DashboardPariwisata = () => {
         </div>
 
         {/* Distribusi Bulanan */}
-        <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-md">
-          <h2 className="text-lg font-bold mb-4 text-center">
+        <div className="border rounded-lg p-4 bg-[#DDE5DC] shadow-md">
+          <h2 className="text-lg font-bold mb-4 text-center text-black">
             Distribusi Pengunjung Per Bulan Berdasarkan Asal
           </h2>
           <div className="h-80">
@@ -290,17 +294,19 @@ const DashboardPariwisata = () => {
                 margin={{ top: 20, right: 40, left: 10, bottom: 20 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis tickFormatter={formatSumbuYBulanan} domain={[0, 6]} />
+                <XAxis dataKey="name" tick={{ fill: 'black' }} />
+                <YAxis tickFormatter={formatSumbuYBulanan} domain={[0, 6]} tick={{ fill: 'black' }} />
                 <Tooltip
                   formatter={(nilai: number) => [`${nilai} juta pengunjung`]}
                   labelFormatter={(nilai: string) => `Bulan ${nilai}`}
+                  contentStyle={{ color: 'black' }}
                 />
                 <Legend
                   layout="horizontal"
                   align="right"
                   wrapperStyle={{
                     paddingRight: "20px",
+                    color: 'black'
                   }}
                 />
                 <Line
@@ -328,8 +334,8 @@ const DashboardPariwisata = () => {
       </div>
 
       {/* Grafik 4: Jumlah Pengunjung Objek Wisata */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-md">
-        <h2 className="text-lg font-bold mb-4 text-center">
+      <div className="border rounded-lg p-4 bg-[#DDE5DC] shadow-md">
+        <h2 className="text-lg font-bold mb-4 text-center text-black">
           Jumlah Pengunjung Objek Wisata
         </h2>
         <div className="h-auto">
@@ -358,7 +364,9 @@ const DashboardPariwisata = () => {
                   value: "Jumlah Pengunjung",
                   position: "bottom",
                   offset: 0,
+                  fill: "black"
                 }}
+                tick={{ fill: 'black' }}
               />
               <YAxis
                 type="category"
@@ -373,7 +381,7 @@ const DashboardPariwisata = () => {
                         y={0}
                         dy={4}
                         textAnchor="end"
-                        fill="#666"
+                        fill="black"
                         style={{
                           fontSize: "14px",
                           whiteSpace: "nowrap",
@@ -395,6 +403,7 @@ const DashboardPariwisata = () => {
                   "Jumlah Pengunjung",
                 ]}
                 cursor={{ fill: "rgba(0, 0, 0, 0.05)" }}
+                contentStyle={{ color: 'black' }}
               />
               <Bar
                 dataKey="pengunjung"
@@ -403,7 +412,7 @@ const DashboardPariwisata = () => {
                 label={{
                   position: "right",
                   formatter: (value: number) => value.toLocaleString(),
-                  fill: "#333",
+                  fill: "black",
                   fontSize: 12,
                 }}
               />
@@ -417,7 +426,7 @@ const DashboardPariwisata = () => {
 
 export default function JumlahPengunjungPage() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-[#F7F7F3] min-h-screen">
       <MenuPariwisata />
       <div className="max-w-6xl mx-auto pt-3">
         <Breadcrumb />

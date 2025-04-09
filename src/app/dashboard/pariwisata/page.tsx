@@ -88,17 +88,17 @@ const PariwisataDashboard = () => {
     {
       label: "Total Wisata",
       value: data.total_wisata.toString(),
-      icon: <FaLandmark className="text-4xl text-teal-600" />,
+      icon: <FaLandmark className="text-4xl text-white" />,
     },
     {
       label: "Total Pengunjung",
       value: data.total_pengunjung.toLocaleString(),
-      icon: <FaUsers className="text-4xl text-teal-600" />,
+      icon: <FaUsers className="text-4xl text-white" />,
     },
     {
       label: "Total Kecamatan",
       value: data.total_kecamatan.toString(),
-      icon: <FaMapMarkerAlt className="text-4xl text-teal-600" />,
+      icon: <FaMapMarkerAlt className="text-4xl text-white" />,
     },
   ];
 
@@ -174,15 +174,15 @@ const PariwisataDashboard = () => {
         {cardData.map((item) => (
           <div
             key={item.label}
-            className="border border-gray-200 rounded-lg p-4 bg-white shadow-md flex flex-col items-center justify-center h-24"
+            className="border border-gray-200 rounded-lg p-4 bg-[#8FAB98] shadow-md flex flex-col items-center justify-center h-24"
           >
             <div className="flex items-center justify-center">
               <div className="mr-3">{item.icon}</div>
               <div className="flex flex-col items-center">
-                <div className="text-sm text-gray-600 text-center">
+                <div className="text-sm text-white text-center">
                   {item.label}
                 </div>
-                <div className="text-xl font-bold text-center">
+                <div className="text-xl font-bold text-center text-white">
                   {item.value}
                 </div>
               </div>
@@ -194,7 +194,7 @@ const PariwisataDashboard = () => {
       {/* Second Row: Bar Chart and Pie Chart */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Bar Chart: Jumlah Wisata Per-Kecamatan */}
-        <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-md">
+        <div className="border rounded-lg p-4 bg-[#DDE5DC] shadow-md">
           <h2 className="text-xl font-bold mb-4 text-center">
             Jumlah Wisata Per-Kecamatan (2024)
           </h2>
@@ -222,7 +222,7 @@ const PariwisataDashboard = () => {
         </div>
 
         {/* Pie Chart: Jenis Wisata */}
-        <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-md flex flex-col items-center">
+        <div className="border rounded-lg p-4 bg-[#DDE5DC] shadow-md flex flex-col items-center">
           <h2 className="text-xl font-bold mb-4 text-center">Jenis Wisata</h2>
           <div className="w-full h-64 flex justify-center">
             <PieChart width={450} height={300}>
@@ -266,7 +266,7 @@ const PariwisataDashboard = () => {
       </div>
 
       {/* Third Row: Yearly Stacked Bar Chart */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-white shadow-md">
+      <div className="border rounded-lg p-4 bg-[#DDE5DC] shadow-md">
         <h2 className="text-xl font-bold mb-4 text-center">
           Jumlah Pengunjung Per Tahun Berdasarkan Kategori Objek Wisata
         </h2>
@@ -303,7 +303,7 @@ const PariwisataDashboard = () => {
 
 export default function PariwisataPage() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-[#F7F7F3] min-h-screen">
       <MenuPariwisata />
       <div className="pb-9 pt-3">
         <PariwisataDashboard />

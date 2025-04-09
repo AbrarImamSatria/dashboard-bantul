@@ -77,11 +77,11 @@ const MenuMenara = () => {
   };
 
   return (
-    <div className="flex justify-center bg-gray-100 p-3 space-x-8">
+    <div className="flex justify-center bg-[#6D8B74] p-3 space-x-8">
       {menuItems.map((item, index) => (
         <div
           key={index}
-          className="flex items-center text-black space-x-2 cursor-pointer"
+          className="flex items-center text-white space-x-2 cursor-pointer"
           onClick={() => handleNavigation(item.path)}
         >
           {item.icon}
@@ -175,41 +175,41 @@ const DashboardMenara = () => {
     {
       label: "Total Menara",
       value: data.totalTowers.toLocaleString(),
-      icon: <FaBroadcastTower className="text-4xl text-teal-600" />,
+      icon: <FaBroadcastTower className="text-4xl text-white" />,
     },
     {
       label: "Perusahaan",
       value: data.totalCompanies.toLocaleString(),
-      icon: <FaBuilding className="text-4xl text-teal-600" />,
+      icon: <FaBuilding className="text-4xl text-white" />,
     },
     {
       label: "Kapanewon",
       value: data.totalKapanewon.toLocaleString(),
-      icon: <FaMapMarkerAlt className="text-4xl text-teal-600" />,
+      icon: <FaMapMarkerAlt className="text-4xl text-white" />,
     },
     {
       label: "Tipe Menara",
       value: data.towerTypes,
-      icon: <FaCubes className="text-4xl text-teal-600" />,
+      icon: <FaCubes className="text-4xl text-white" />,
     },
   ];
 
   return (
-    <div className="flex flex-col gap-8 p-4 max-w-6xl mx-auto">
+    <div className="flex flex-col gap-8 p-4 max-w-6xl mx-auto ">
       {/* Baris pertama: Cards dengan statistik utama */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {cardData.map((item, index) => (
           <div
             key={index}
-            className="border border-gray-200 rounded-lg p-4 bg-white shadow-md flex flex-col items-center justify-center h-24"
+            className="border border-gray-200 rounded-lg p-4 bg-[#8FAB98] shadow-md flex flex-col items-center justify-center h-24"
           >
             <div className="flex items-center justify-center">
               <div className="mr-3">{item.icon}</div>
               <div className="flex flex-col items-center">
-                <div className="text-sm text-gray-600 text-center">
+                <div className="text-sm text-white text-center">
                   {item.label}
                 </div>
-                <div className="text-xl font-bold text-center">
+                <div className="text-xl font-bold text-center text-white">
                   {item.value}
                 </div>
               </div>
@@ -221,7 +221,7 @@ const DashboardMenara = () => {
       {/* Baris kedua: Distribusi Perusahaan (Pie) dan Distribusi Kapanewon (Bar) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Distribusi Menara Berdasarkan Perusahaan */}
-        <div className="border rounded-lg p-4 bg-white shadow-sm">
+        <div className="border rounded-lg p-4 bg-[#F7F7F3] shadow-sm">
           <h3 className="text-lg font-semibold mb-1">
             Distribusi Menara Berdasarkan Perusahaan
           </h3>
@@ -258,7 +258,7 @@ const DashboardMenara = () => {
         </div>
 
         {/* Distribusi Menara Berdasarkan Kapanewon */}
-        <div className="border rounded-lg p-4 bg-white shadow-sm">
+        <div className="border rounded-lg p-4 bg-[#F7F7F3]shadow-sm">
           <h3 className="text-lg font-semibold mb-1">
             Distribusi Menara Berdasarkan Kapanewon
           </h3>
@@ -313,7 +313,7 @@ const DashboardMenara = () => {
       {/* Baris ketiga: Distribusi Ketinggian dan Distribusi Zona Kawasan */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Distribusi Menara Berdasarkan Ketinggian */}
-        <div className="border rounded-lg p-4 bg-white shadow-sm">
+        <div className="border rounded-lg p-4 bg-[#F7F7F3] shadow-sm">
           <h3 className="text-lg font-semibold mb-1">
             Distribusi Menara Berdasarkan Ketinggian
           </h3>
@@ -351,7 +351,7 @@ const DashboardMenara = () => {
         </div>
 
         {/* Distribusi Menara Berdasarkan Zona Kawasan */}
-        <div className="border rounded-lg p-4 bg-white shadow-sm">
+        <div className="border rounded-lg p-4 bg-[#F7F7F3] shadow-sm">
           <h3 className="text-lg font-semibold mb-1">
             Distribusi Menara Berdasarkan Zona Kawasan
           </h3>
@@ -440,7 +440,7 @@ const DashboardMenara = () => {
 // Main Component
 export default function HalamanMenara() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-[#F7F7F3] min-h-screen">
       <MenuMenara />
       <div className="pb-9 pt-3">
         <DashboardMenara />
