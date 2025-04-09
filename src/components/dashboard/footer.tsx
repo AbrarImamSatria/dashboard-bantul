@@ -47,7 +47,7 @@ const VisitorCounter: React.FC<VisitorCounterProps> = ({ targetCount, targetDeci
 const Footer: React.FC = () => {
   return (
     <footer className="bg-[#5F7161] relative z-20 text-yellow-300 py-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         <div className="flex items-center mb-6">
           <img
             src="/image.png"
