@@ -38,7 +38,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className="bg-[#5F7161] relative z-20">
+    <header className="bg-[#5F7161] shadow-md relative z-20">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
@@ -47,6 +47,10 @@ const Navbar = () => {
               alt="Logo"
               className="h-auto w-auto max-h-20"
             />
+            <div className="ml-2">
+            <h1 className="text-2xl font-bold text-white">Dashboard</h1>
+            <h1 className="text-2xl font-bold text-white">Bantul</h1>
+            </div>
           </div>
           <nav className="flex items-center space-x-4 relative z-30">
             <div className="relative" ref={dashboardRef}>
