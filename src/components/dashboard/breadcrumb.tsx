@@ -19,6 +19,9 @@ const pathMap: Record<string, string> = {
   "distribusi-wisata": " Detail Distribusi Wisata",
   "jenis-wisata": "Detail Jenis Wisata",
   "jumlah-pengunjung": "Detail Jumlah Pengunjung",
+
+  "balita-gizi": "Prevalensi Balita Bermasalah Gizi",
+  "balita-stunting" :"Prevalensi Balita Bermasalah Gizi"
 };
 
 const Breadcrumb = () => {
