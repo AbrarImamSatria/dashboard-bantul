@@ -1,10 +1,16 @@
 @import "tailwindcss";
 
-@layer base {
-
-
-  body {
-    background-color: #f7f7f7;
-  }
+body {
+  overflow-x: hidden; /* Mencegah scroll horizontal */
+  background-color: #f7f7f7;
 }
 
+.container {
+  max-width: 100%; /* Membatasi lebar maksimum */
+  width: 100vw; /* Lebar sesuai dengan viewport */
+}
+
+.scrollable-element {
+  overflow-x: hidden; /* Mencegah scroll horizontal */
+  overflow-y: auto; /* Hanya mengizinkan scroll vertikal */
+}

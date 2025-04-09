@@ -264,9 +264,9 @@ export default function DashboardHeader() {
         </div>
       </div>
 
-      <main className="max-w-7xl mx-auto px-6 py-10 w-full">
+      <main className="max-w-7xl mx-auto px-6  w-full">
         {/* Highlight Section */}
-        <section className="w-full">
+        <section className="w-full pt-5">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-3xl font-semibold text-[#38453A]">Highlight</h2>
             
@@ -391,7 +391,7 @@ export default function DashboardHeader() {
                     <path d="M22 14L23 13" stroke="#4A5568" strokeWidth="2"/>
                   </svg>
                 }
-                title="Stunting"
+                title="Kesehatan"
               />
               
               <SidebarMenuItem 
@@ -535,37 +535,40 @@ export default function DashboardHeader() {
         </section>
         
         {/* Map Visualization */}
-        <section className="mt-8">
+        <section className="mt-8 w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-[#BFD0C17A] p-6 pl-40 pr-40 shadow-md ">
           <h2 className="text-3xl font-semibold text-[#38453A] mb-4">Visualisasi Peta</h2>
-
-          {/* Search Bar */}
-          <div className="mb-6">
-            <div className="inline-flex items-center bg-[#6D8B74] text-white rounded-lg overflow-hidden">
-              <div className="px-4 py-2">
-                <span className="font-medium">Cari visualisasi Peta</span>
-              </div>
-              <button className="bg-[#5F7161] text-white px-4 py-2 border-l border-[#4F6251]">
-                Cari
-              </button>
-            </div>
-          </div>
-
+          
           <div className="flex flex-col md:flex-row gap-6">
-            {/* Sidebar Categories */}
-            <div className="w-full md:w-1/3 space-y-3">
-              {mapCategories.map((title, index) => (
-                <button 
-                  key={index} 
-                  className="w-full bg-[#BFD0C1] text-[#38453A] text-left px-4 py-3 rounded-lg shadow hover:bg-[#A5BEAA] transition"
-                >
-                  {title}
-                </button>
-              ))}
+            {/* Left Side: Search Bar + Categories */}
+            <div className="w-full md:w-3/7 space-y-6">
+              {/* Search Bar - Now aligned with sidebar width */}
+              <div className="w-full">
+                <div className="flex items-center bg-[#6D8B74] text-white rounded-lg overflow-hidden w-full">
+                  <div className="px-4 py-2 flex-grow">
+                    <span className="font-medium">Cari visualisasi Peta</span>
+                  </div>
+                  <button className="bg-[#5F7161] text-white px-4 py-2 border-l border-[#4F6251]">
+                    Cari
+                  </button>
+                </div>
+              </div>
+              
+              {/* Sidebar Categories */}
+              <div className="space-y-3 pb-5">
+                {mapCategories.map((title, index) => (
+                  <button 
+                    key={index} 
+                    className="w-full bg-[#BFD0C1] text-[#38453A] text-left px-4 py-3 rounded-lg shadow hover:bg-[#A5BEAA] transition"
+                  >
+                    {title}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {/* Map */}
+            {/* Map - Now starts at the same height as search bar */}
             <div className="w-full md:w-2/3">
-              <div className="w-full h-[400px] bg-gray-300 rounded-lg shadow-md">
+              <div className="w-full h-[410px] bg-gray-300 rounded-lg shadow-md">
                 <iframe
                   className="w-full h-full rounded-lg"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.593627605082!2d110.32859167580967!3d-7.831357377170865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a56c6df0d5f5b%3A0x5027a76e356ef70!2sBantul%2C%20Kecamatan%20Bantul%2C%20Daerah%20Istimewa%20Yogyakarta!5e0!3m2!1sen!2sid!4v1710000000000!5m2!1sen!2sid"
@@ -620,7 +623,7 @@ const DashboardCard: React.FC<DashboardCardProps> = ({ icon, title, viewCount, y
       <a 
         href="#" 
         className="flex items-center justify-center bg-[#9AB5A1] rounded-lg shadow-sm hover:shadow-md transition mb-2"
-        style={{ height: cardHeight }}
+        style={{ height: typeof cardHeight === 'number' ? `${cardHeight}px` : cardHeight }}
       >
         <div className="flex items-center justify-center">
           {icon}

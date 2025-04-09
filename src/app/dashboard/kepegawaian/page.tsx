@@ -76,7 +76,7 @@ interface DashboardCardsProps {
 // Komponen BarChartCard
 const BarChartCard = ({ data, title, yMax, ticks }: BarChartCardProps) => {
   return (
-    <div className="border border-gray-200 rounded-lg p-6 bg-white shadow-md flex flex-col items-center">
+    <div className="border border-gray-200 rounded-lg p-6 bg-[##F7F7F3] shadow-md flex flex-col items-center">
       <h2 className="text-xl font-bold mb-4 text-center">{title}</h2>
       <div className="w-full flex justify-center mt-11">
         <RechartsBarChart
@@ -139,7 +139,7 @@ const GenderDistributionCard = ({
   const pppkFemalePercent = ((genderData.pppk.perempuan / pppkTotal) * 100).toFixed(2);
 
   return (
-    <div className="border border-gray-200 rounded-lg p-6 bg-white shadow-md">
+    <div className="border border-gray-200 rounded-lg p-6 bg-[##F7F7F3] shadow-md">
       <h2 className="text-xl font-bold mb-4 text-left">
         Distribusi ASN Berdasarkan Jenis Kelamin
       </h2>
@@ -239,7 +239,7 @@ const PieChartCard = ({ data, colors }: PieChartCardProps) => {
   };
 
   return (
-    <div className="border border-gray-200 rounded-lg p-6 bg-white shadow-md flex flex-col items-center">
+    <div className="border border-gray-200 rounded-lg p-6 bg-[##F7F7F3] shadow-md flex flex-col items-center">
       <h2 className="text-xl font-bold mb-6 text-center">
         Perbandingan PNS dan PPPK
       </h2>
@@ -292,15 +292,15 @@ const DashboardCards = ({ cardData }: DashboardCardsProps) => {
       {cardData.map((item) => (
         <div
           key={item.label}
-          className="border border-gray-200 rounded-lg p-4 bg-white shadow-md flex flex-col items-center justify-center h-24"
+          className="border border-gray-200 rounded-lg p-4 bg-[#6D8B74] shadow-md flex flex-col items-center justify-center h-24"
         >
           <div className="flex items-center justify-center">
             <div className="mr-3">{item.icon}</div>
             <div className="flex flex-col items-center">
-              <div className="text-sm text-gray-600 text-center">
+              <div className="text-sm text-white text-center">
                 {item.label}
               </div>
-              <div className="text-xl font-bold text-center">
+              <div className="text-xl text-white font-bold text-center">
                 {item.value}
               </div>
             </div>
@@ -388,22 +388,22 @@ const CombinedDashboard = () => {
     {
       label: "Total ASN",
       value: dashboardData.total_asn.toLocaleString(),
-      icon: <FaUsers className="text-4xl text-teal-600" />,
+      icon: <FaUsers className="text-4xl text-white" />,
     },
     {
       label: "Jumlah PNS",
       value: dashboardData.jumlah_pns.toLocaleString(),
-      icon: <FaUsers className="text-4xl text-teal-600" />,
+      icon: <FaUsers className="text-4xl text-white" />,
     },
     {
       label: "Jumlah PPPK",
       value: dashboardData.jumlah_pppk.toLocaleString(),
-      icon: <FaUsers className="text-4xl text-teal-600" />,
+      icon: <FaUsers className="text-4xl text-white" />,
     },
     {
       label: "Kebutuhan ASN",
       value: dashboardData.kebutuhan_asn.toLocaleString(),
-      icon: <FaUsers className="text-4xl text-teal-600" />,
+      icon: <FaUsers className="text-4xl text-white" />,
     },
   ];
 
@@ -440,7 +440,7 @@ const CombinedDashboard = () => {
 // Komponen ASNPage
 export default function ASNPage() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className=" min-h-screen">
       <MenuKepegawaian />
       <div className="pb-9 pt-3">
         <CombinedDashboard />

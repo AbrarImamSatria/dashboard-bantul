@@ -23,11 +23,11 @@ const MenuKepegawaian = () => {
   };
 
   return (
-    <div className="flex justify-center bg-gray-100 p-3 space-x-8">
+    <div className="flex justify-center bg-[#6D8B74] p-3 space-x-8">
       {menuItems.map((item, index) => (
         <div
           key={index}
-          className="flex items-center text-black space-x-2 cursor-pointer"
+          className="flex items-center text-white space-x-2 cursor-pointer"
           onClick={() => handleNavigation(item.path)}
         >
           {item.icon}
