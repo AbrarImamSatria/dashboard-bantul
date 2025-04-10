@@ -106,7 +106,7 @@ const Navbar = () => {
                     Pariwisata
                   </Link>
                   <Link
-                    href="/dashboard/kesehatan/stunting/balita-gizi"
+                    href="/dashboard/kesehatan/stunting/balita-stunting"
                     className="block px-4 py-2 hover:bg-gray-100 text-gray-800"
                     onClick={handleMenuClick}
                   >

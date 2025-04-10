@@ -2,8 +2,8 @@
 
 import React, { useState, FormEvent, useRef, useEffect } from 'react';
 import { MapPin, TrendingUp, FileText, Building, Users, UserPlus, Mountain, BarChart2, Umbrella, Activity, Menu } from 'lucide-react';
+import Link from 'next/link';
 
-// Define types for highlight cards
 interface HighlightCard {
   id: number;
   title: string;
@@ -12,10 +12,24 @@ interface HighlightCard {
   link: string;
 }
 
-// Define types for dimensions state
 interface Dimensions {
   sidebarHeight: number;
   rowHeight: number;
+}
+
+interface SidebarMenuItemProps {
+  icon: React.ReactNode;
+  title: string;
+  link: string;
+}
+
+interface DashboardCardProps {
+  icon: React.ReactNode;
+  title: string;
+  viewCount: string;
+  year: string;
+  rowHeight: number;
+  link: string;
 }
 
 export default function DashboardHeader() {
@@ -23,15 +37,12 @@ export default function DashboardHeader() {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [autoScrollEnabled, setAutoScrollEnabled] = useState<boolean>(true);
   const [scrollDirection, setScrollDirection] = useState<'left' | 'right'>('right');
-  
-  // For the topic section
   const sidebarRef = useRef<HTMLDivElement | null>(null);
   const [dimensions, setDimensions] = useState<Dimensions>({
     sidebarHeight: 0,
     rowHeight: 0
   });
-  
-  // Auto scroll functionality
+
   useEffect(() => {
     let scrollInterval: NodeJS.Timeout | undefined;
     
@@ -43,19 +54,17 @@ export default function DashboardHeader() {
         const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
         const isAtStart = container.scrollLeft <= 10;
         
-        // Change direction when reaching the end or start
         if (isAtEnd && scrollDirection === 'right') {
           setScrollDirection('left');
         } else if (isAtStart && scrollDirection === 'left') {
           setScrollDirection('right');
         }
         
-        // Scroll based on current direction
         container.scrollBy({ 
           left: scrollDirection === 'right' ? 300 : -300, 
           behavior: 'smooth' 
         });
-      }, 4000); // Scroll every 4 seconds
+      }, 4000);
     }
     
     return () => {
@@ -63,13 +72,10 @@ export default function DashboardHeader() {
     };
   }, [autoScrollEnabled, scrollDirection]);
   
-  // Topic section dimensions
   useEffect(() => {
     const updateDimensions = () => {
       if (sidebarRef.current) {
         const totalHeight = sidebarRef.current.offsetHeight;
-        
-        // For a 3-row grid, each row should be 1/3 of sidebar height
         const rowHeight = totalHeight / 3;
         
         setDimensions({
@@ -79,10 +85,7 @@ export default function DashboardHeader() {
       }
     };
     
-    // Initial measurement
     updateDimensions();
-    
-    // Add resize listener
     window.addEventListener('resize', updateDimensions);
     
     return () => window.removeEventListener('resize', updateDimensions);
@@ -97,8 +100,6 @@ export default function DashboardHeader() {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: -300, behavior: 'smooth' });
       setScrollDirection('left');
-      
-      // Temporarily pause auto-scroll when manually scrolling
       setAutoScrollEnabled(false);
       setTimeout(() => setAutoScrollEnabled(true), 8000);
     }
@@ -108,67 +109,21 @@ export default function DashboardHeader() {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: 300, behavior: 'smooth' });
       setScrollDirection('right');
-      
-      // Temporarily pause auto-scroll when manually scrolling
       setAutoScrollEnabled(false);
       setTimeout(() => setAutoScrollEnabled(true), 8000);
     }
   };
 
-  // Highlight card data
   const highlightCards: HighlightCard[] = [
-    { 
-      id: 1, 
-      title: 'Menara', 
-      image: '/images/menara.jpg',
-      icon: "📡",
-      link: "/dashboard/menara"
-    },
-    { 
-      id: 2, 
-      title: 'Kepegawaian', 
-      image: '/images/kepegawaian.jpg',
-      icon: "💼",
-      link: "/dashboard/kepegawaian"
-    },
-    { 
-      id: 3, 
-      title: 'Kependudukan', 
-      image: '/images/kependudukan.jpg',
-      icon: "👥",
-      link: "/dashboard/kependudukan"
-    },
-    { 
-      id: 4, 
-      title: 'Pariwisata', 
-      image: '/images/pariwisata.jpg',
-      icon: "🏔",
-      link: "/dashboard/pariwisata"
-    },
-    { 
-      id: 5, 
-      title: 'Kesehatan', 
-      image: '/images/kesehatan.jpg',
-      icon: "🏥",
-      link: "/dashboard/kesehatan"
-    },
-    { 
-      id: 6, 
-      title: 'Pendidikan', 
-      image: '/images/pendidikan.jpg',
-      icon: "🎓",
-      link: "/dashboard/pendidikan"
-    },
-    { 
-      id: 7, 
-      title: 'Pertanian', 
-      image: '/images/pertanian.jpg',
-      icon: "🌾",
-      link: "/dashboard/pertanian" 
-    }
+    { id: 1, title: 'Menara', image: '/images/menara.jpg', icon: "📡", link: "/dashboard/menara" },
+    { id: 2, title: 'Kepegawaian', image: '/images/kepegawaian.jpg', icon: "💼", link: "/dashboard/kepegawaian" },
+    { id: 3, title: 'Kependudukan', image: '/images/kependudukan.jpg', icon: "👥", link: "/dashboard/kependudukan" },
+    { id: 4, title: 'Pariwisata', image: '/images/pariwisata.jpg', icon: "🏔", link: "/dashboard/pariwisata" },
+    { id: 5, title: 'Kesehatan', image: '/images/kesehatan.jpg', icon: "🏥", link: "/dashboard/kesehatan/stunting/balita-stunting" },
+    { id: 6, title: 'Pendidikan', image: '/images/pendidikan.jpg', icon: "🎓", link: "/dashboard/pendidikan" },
+    { id: 7, title: 'Pertanian', image: '/images/pertanian.jpg', icon: "🌾", link: "/dashboard/pertanian" }
   ];
 
-  // Map visualization categories
   const mapCategories: string[] = [
     "Kepadatan Penduduk Berdasarkan Kabupaten Bantul",
     "Angka Harapan Hidup Berdasarkan Kabupaten Bantul",
@@ -183,15 +138,12 @@ export default function DashboardHeader() {
       {/* Hero Header Section */}
       <div className="w-full bg-[#6D8B74] text-white rounded-b-[60px] px-8 py-12 shadow-md relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          {/* Header Content */}
           <div className="flex flex-col md:flex-row justify-between items-start gap-8">
-            {/* Left Side - Title and Search */}
             <div className="w-full md:w-1/2 z-10 pt-14 pb-14">
               <h1 className="text-5xl font-bold mb-2">Visualisasi Data Bantul</h1>
               <h2 className="text-5xl font-bold mb-6">Lebih Mudah dan Terpusat</h2>
               <p className="text-2xl mb-6">Pusat dashboard Kabupaten Bantul dalam satu kanal</p>
               
-              {/* Search Bar */}
               <form onSubmit={handleSearch} className="relative">
                 <div className="flex items-center bg-white rounded-lg overflow-hidden p-1.5">
                   <div className="flex items-center pl-3">
@@ -216,10 +168,8 @@ export default function DashboardHeader() {
               </form>
             </div>
             
-            {/* Right Side - Stats Cards */}
             <div className="w-full md:w-1/2 z-10">
               <div className="bg-[#E8A7A700] bg-opacity-20 backdrop-blur-sm rounded-lg p-4 text-gray-800 bg-[#f8f5e9]">
-                {/* Header with icon */}
                 <div className="px-4 py-2 mb-2">
                   <div className="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#5F7161] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -229,9 +179,7 @@ export default function DashboardHeader() {
                   </div>
                 </div>
                 
-                {/* Stats Grid */}
                 <div className="grid grid-cols-3 divide-x divide-gray-300">
-                  {/* Card 1 */}
                   <div className="px-4 py-10">
                     <p className="text-2xl font-semibold text-[#5F7161] mb-3">Jumlah Penduduk</p>
                     <div className="flex items-end">
@@ -240,7 +188,6 @@ export default function DashboardHeader() {
                     </div>
                   </div>
                   
-                  {/* Card 2 */}
                   <div className="px-4 py-10">
                     <p className="text-2xl font-semibold text-[#5F7161] mb-3">Luas <br />Wilayah</p>
                     <div className="flex items-end mb-10">
@@ -249,7 +196,6 @@ export default function DashboardHeader() {
                     </div>
                   </div>
                   
-                  {/* Card 3 */}
                   <div className="px-4 py-10">
                     <p className="text-2xl font-semibold text-[#5F7161] mb-3">Kepadatan Penduduk</p>
                     <div className="flex items-end">
@@ -264,13 +210,12 @@ export default function DashboardHeader() {
         </div>
       </div>
 
-      <main className="max-w-7xl mx-auto px-6  w-full">
+      <main className="max-w-7xl mx-auto px-6 w-full">
         {/* Highlight Section */}
         <section className="w-full pt-5">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-3xl font-semibold text-[#38453A]">Highlight</h2>
             
-            {/* Navigation Buttons */}
             <div className="flex gap-2">
               <button 
                 onClick={scrollLeft}
@@ -293,7 +238,6 @@ export default function DashboardHeader() {
             </div>
           </div>
           
-          {/* Scrollable Highlight Cards - Auto-looping */}
           <div 
             ref={scrollContainerRef}
             className="flex overflow-x-auto pb-4 gap-4 scrollbar-hide"
@@ -302,14 +246,13 @@ export default function DashboardHeader() {
             onMouseLeave={() => setAutoScrollEnabled(true)}
           >
             {highlightCards.map(card => (
-              <a 
+              <Link 
                 key={card.id}
                 href={card.link}
                 className="flex-shrink-0 w-72 bg-[#BFD0C1] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition"
                 style={{ scrollSnapAlign: 'start' }}
               >
                 <div className="h-32 overflow-hidden bg-gray-100">
-                  {/* Using icons for visualization */}
                   <div className="w-full h-full flex items-center justify-center bg-gray-200">
                     <span className="text-5xl">{card.icon}</span>
                   </div>
@@ -317,11 +260,10 @@ export default function DashboardHeader() {
                 <div className="p-2 text-center flex items-center justify-center">
                   <h3 className="text-lg font-medium text-[#38453A]">{card.title}</h3>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
           
-          {/* Custom scrollbar styling */}
           <style jsx>{`
             .scrollbar-hide::-webkit-scrollbar {
               display: none;
@@ -329,12 +271,11 @@ export default function DashboardHeader() {
           `}</style>
         </section>
 
-        {/* Topic Section - REPLACED WITH NEW IMPLEMENTATION */}
+        {/* Topic Section */}
         <section className="mt-8">
           <h2 className="text-3xl font-semibold text-[#38453A] mb-4">Topik</h2>
           
           <div className="flex flex-col md:flex-row gap-6">
-            {/* Sidebar Menu */}
             <div ref={sidebarRef} className="w-full md:w-64 flex flex-col gap-4">
               <SidebarMenuItem 
                 icon={
@@ -344,6 +285,7 @@ export default function DashboardHeader() {
                   </svg>
                 }
                 title="Menara"
+                link="/dashboard/menara"
               />
               
               <SidebarMenuItem 
@@ -356,6 +298,7 @@ export default function DashboardHeader() {
                   </svg>
                 }
                 title="Kepegawaian"
+                link="/dashboard/kepegawaian"
               />
               
               <SidebarMenuItem 
@@ -369,6 +312,7 @@ export default function DashboardHeader() {
                   </svg>
                 }
                 title="Kependudukan"
+                link="/dashboard/kependudukan"
               />
               
               <SidebarMenuItem 
@@ -379,6 +323,7 @@ export default function DashboardHeader() {
                   </svg>
                 }
                 title="Pariwisata"
+                link="/dashboard/pariwisata"
               />
               
               <SidebarMenuItem 
@@ -392,15 +337,16 @@ export default function DashboardHeader() {
                   </svg>
                 }
                 title="Kesehatan"
+                link="/dashboard/kesehatan/stunting/balita-stunting"
               />
               
               <SidebarMenuItem 
                 icon={<Menu size={32} color="#4A5568" />}
                 title="Topik Lain"
+                link="#"
               />
             </div>
             
-            {/* Card Grid */}
             <div 
               className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
               style={{ 
@@ -408,7 +354,7 @@ export default function DashboardHeader() {
                 minHeight: dimensions.sidebarHeight ? `${dimensions.sidebarHeight}px` : 'auto'
               }}
             >
-              {/* Row 1 */}
+              {/* Menara Cards */}
               <DashboardCard 
                 icon={
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -420,6 +366,7 @@ export default function DashboardHeader() {
                 viewCount="923.479"
                 year="2024"
                 rowHeight={dimensions.rowHeight}
+                link="/dashboard/menara"
               />
               
               <DashboardCard 
@@ -428,14 +375,7 @@ export default function DashboardHeader() {
                 viewCount="923.479"
                 year="2024"
                 rowHeight={dimensions.rowHeight}
-              />
-              
-              <DashboardCard 
-                icon={<FileText size={48} color="white" />}
-                title="Dokumen Menara"
-                viewCount="923.479"
-                year="2024"
-                rowHeight={dimensions.rowHeight}
+                link="/dashboard/menara/statik"
               />
               
               <DashboardCard 
@@ -444,15 +384,17 @@ export default function DashboardHeader() {
                 viewCount="923.479"
                 year="2024"
                 rowHeight={dimensions.rowHeight}
+                link="/dashboard/menara/peta"
               />
               
-              {/* Row 2 */}
+              {/* Kepegawaian Cards */}
               <DashboardCard 
                 icon={<Building size={48} color="white" />}
-                title="Dashboard Menara"
+                title="Dashboard Kepegawaian"
                 viewCount="923.479"
                 year="2024"
                 rowHeight={dimensions.rowHeight}
+                link="/dashboard/kepegawaian"
               />
               
               <DashboardCard 
@@ -473,6 +415,7 @@ export default function DashboardHeader() {
                 viewCount="923.479"
                 year="2024"
                 rowHeight={dimensions.rowHeight}
+                link="/dashboard/kepegawaian/distribusi-asn"
               />
               
               <DashboardCard 
@@ -481,8 +424,10 @@ export default function DashboardHeader() {
                 viewCount="923.479"
                 year="2024"
                 rowHeight={dimensions.rowHeight}
+                link="/dashboard/kepegawaian/jenis-pegawai"
               />
               
+              {/* Kependudukan Card */}
               <DashboardCard 
                 icon={
                   <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -492,19 +437,21 @@ export default function DashboardHeader() {
                     <path d="M18 32H24" stroke="white" strokeWidth="2"/>
                   </svg>
                 }
-                title="Jabatan ASN"
+                title="Dashboard Kependudukan"
                 viewCount="923.479"
                 year="2024"
                 rowHeight={dimensions.rowHeight}
+                link="/dashboard/kependudukan"
               />
               
-              {/* Row 3 */}
+              {/* Pariwisata Cards */}
               <DashboardCard 
                 icon={<Mountain size={48} color="white" />}
                 title="Dashboard Pariwisata"
                 viewCount="923.479"
                 year="2024"
                 rowHeight={dimensions.rowHeight}
+                link="/dashboard/pariwisata"
               />
               
               <DashboardCard 
@@ -513,6 +460,7 @@ export default function DashboardHeader() {
                 viewCount="923.479"
                 year="2024"
                 rowHeight={dimensions.rowHeight}
+                link="/dashboard/pariwisata/distribusi-wisata"
               />
               
               <DashboardCard 
@@ -521,6 +469,7 @@ export default function DashboardHeader() {
                 viewCount="923.479"
                 year="2024"
                 rowHeight={dimensions.rowHeight}
+                link="/dashboard/pariwisata/jenis-wisata"
               />
               
               <DashboardCard 
@@ -529,19 +478,46 @@ export default function DashboardHeader() {
                 viewCount="923.479"
                 year="2024"
                 rowHeight={dimensions.rowHeight}
+                link="/dashboard/pariwisata/jumlah-pengunjung"
+              />
+              
+              {/* Kesehatan Cards */}
+              <DashboardCard 
+                icon={<Activity size={48} color="white" />}
+                title="Balita Stunting"
+                viewCount="923.479"
+                year="2024"
+                rowHeight={dimensions.rowHeight}
+                link="/dashboard/kesehatan/stunting/balita-stunting"
+              />
+              
+              <DashboardCard 
+                icon={<UserPlus size={48} color="white" />}
+                title="Balita Gizi"
+                viewCount="923.479"
+                year="2024"
+                rowHeight={dimensions.rowHeight}
+                link="/dashboard/kesehatan/stunting/balita-gizi"
+              />
+              
+              <DashboardCard 
+                icon={<FileText size={48} color="white" />}
+                title="Pengukuran Balita"
+                viewCount="923.479"
+                year="2024"
+                rowHeight={dimensions.rowHeight}
+                link="/dashboard/kesehatan/stunting/pengukuran-balita"
               />
             </div>
           </div>
         </section>
         
         {/* Map Visualization */}
-        <section className="mt-8 w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-[#BFD0C17A] p-6 pl-40 pr-40 shadow-md ">
+        <section className="mt-8 w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-[#BFD0C17A] p-6 pl-40 pr-40 shadow-md">
           <h2 className="text-3xl font-semibold text-[#38453A] mb-4">Visualisasi Peta</h2>
           
           <div className="flex flex-col md:flex-row gap-6">
-            {/* Left Side: Search Bar + Categories */}
             <div className="w-full md:w-3/7 space-y-6">
-              {/* Search Bar - Now aligned with sidebar width */}
               <div className="w-full">
                 <div className="flex items-center bg-[#6D8B74] text-white rounded-lg overflow-hidden w-full">
                   <div className="px-4 py-2 flex-grow">
@@ -553,7 +529,6 @@ export default function DashboardHeader() {
                 </div>
               </div>
               
-              {/* Sidebar Categories */}
               <div className="space-y-3 pb-5">
                 {mapCategories.map((title, index) => (
                   <button 
@@ -566,7 +541,6 @@ export default function DashboardHeader() {
               </div>
             </div>
 
-            {/* Map - Now starts at the same height as search bar */}
             <div className="w-full md:w-2/3">
               <div className="w-full h-[410px] bg-gray-300 rounded-lg shadow-md">
                 <iframe
@@ -585,55 +559,34 @@ export default function DashboardHeader() {
   );
 }
 
-// Define types for the SidebarMenuItem component
-interface SidebarMenuItemProps {
-  icon: React.ReactNode;
-  title: string;
-}
-
-// Sidebar Menu Item Component
-const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ icon, title }) => {
+const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({ icon, title, link }) => {
   return (
-    <a href="#" className="flex items-center gap-4 p-4 rounded-lg bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all">
+    <Link href={link} className="flex items-center gap-4 p-4 rounded-lg bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all">
       <div className="text-gray-600">
         {icon}
       </div>
       <span className="text-lg font-medium text-gray-700">{title}</span>
-    </a>
+    </Link>
   );
 };
 
-// Define types for the DashboardCard component
-interface DashboardCardProps {
-  icon: React.ReactNode;
-  title: string;
-  viewCount: string;
-  year: string;
-  rowHeight: number;
-}
-
-// Dashboard Card Component
-const DashboardCard: React.FC<DashboardCardProps> = ({ icon, title, viewCount, year, rowHeight }) => {
-  // Calculate card height as a percentage of row height to leave space for text
+const DashboardCard: React.FC<DashboardCardProps> = ({ icon, title, viewCount, year, rowHeight, link }) => {
   const cardHeight = rowHeight ? rowHeight * 0.65 : 'auto';
   
   return (
     <div className="flex flex-col h-full">
-      {/* Card with dynamic height based on sidebar */}
-      <a 
-        href="#" 
+      <Link 
+        href={link}
         className="flex items-center justify-center bg-[#9AB5A1] rounded-lg shadow-sm hover:shadow-md transition mb-2"
         style={{ height: typeof cardHeight === 'number' ? `${cardHeight}px` : cardHeight }}
       >
         <div className="flex items-center justify-center">
           {icon}
         </div>
-      </a>
+      </Link>
       
-      {/* Title outside of card */}
       <h3 className="text-black font-medium text-base mb-1">{title}</h3>
       
-      {/* Stats in a separate row with pill shapes */}
       <div className="flex gap-1">
         <div className="flex items-center text-xs text-gray-600 bg-gray-200 rounded-full px-2 py-0.5">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
