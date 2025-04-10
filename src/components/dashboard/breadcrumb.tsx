@@ -21,7 +21,7 @@ const pathMap: Record<string, string> = {
   "jumlah-pengunjung": "Detail Jumlah Pengunjung",
 
   "balita-gizi": "Prevalensi Balita Bermasalah Gizi",
-  "balita-stunting" :"Prevalensi Balita Bermasalah Gizi"
+  "balita-stunting" :"Prevalensi Balita Bermasalah Stunting"
 };
 
 const Breadcrumb = () => {
